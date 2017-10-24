@@ -1,9 +1,11 @@
 syntax = "proto3";
+package message;
+
 message User {
   int32 id = 1;
   string firstName = 2;
   string lastName = 3;
-  int birthday = 4;
+  int32 birthday = 4;
   repeated Vehicle vehicles = 5;
 }
 
@@ -35,7 +37,7 @@ message AddImageResponse {
 }
 
 service UserService {
-  rpc GetByUserId (getByUserIdRequest) returns (UserResponse);
+  rpc GetByUserId (getByUserIdRequest) returns (Vehicle);
   rpc getAll (GetAllRequest) returns (stream UserResponse);
   rpc save (UserRequest) returns (UserResponse);
   rpc saveAll (stream UserRequest) returns (stream UserResponse);
